@@ -14,13 +14,16 @@ const login = async (req, res) => {
 		where: { email: email },
 	})
 
+	const secret = process.env.JWT_SECRET
+
 	const isPasswordCorrect =
 		user && (await brypt.compare(password, user.password))
-	if (user && isPasswordCorrect) {
+	if (user && isPasswordCorrect && secret) {
 		res.status(200).json({
 			id: user.id,
 			email: user.email,
 			name: user.name,
+			token: jwt.sign({ id: user.id }, secret, { expiresIn: '30d' }),
 		})
 	} else {
 		return res.status(400).json({
@@ -80,8 +83,12 @@ const register = async (req, res) => {
 	}
 }
 
+// @route GET/api/user/current
+// @desc Текущий пользователь
+// @access Private
+
 const current = async (req, res) => {
-	res.send('current')
+	res.status(200).json(req.user)
 }
 
 module.exports = {
