@@ -4,37 +4,33 @@ type Props = {
 	children: React.ReactNode
 	htmlType?: 'button' | 'submit' | 'reset' | undefined
 	onClick?: () => void
-	type?: 'link' | 'text' | 'default' | 'primary' | 'dashed' | undefined
-	danger?: boolean | undefined
-	loading?:
-		| boolean
-		| {
-				delay?: number | undefined
-		  }
-		| undefined
-	shape?: 'default' | 'circle' | 'round' | undefined
+	type?: 'primary' | 'link' | 'text' | 'ghost' | 'default' | 'dashed'
+	danger?: boolean
+	loading?: boolean
+	shape?: 'circle' | 'default' | 'round' | undefined
 	icon?: React.ReactNode
 }
 
 export const CustomButton = ({
 	children,
-	htmlType = 'button',
-	onClick,
 	type,
 	danger,
 	loading,
+	htmlType = 'button',
+	onClick,
 	shape,
 	icon,
 }: Props) => {
 	return (
 		<Form.Item>
 			<Button
-				htmlType={htmlType}
-				onClick={onClick}
 				type={type}
+				htmlType={htmlType}
 				danger={danger}
 				loading={loading}
+				size='large'
 				shape={shape}
+				onClick={onClick}
 				icon={icon}
 			>
 				{children}

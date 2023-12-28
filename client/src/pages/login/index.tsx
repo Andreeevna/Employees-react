@@ -1,5 +1,10 @@
-import { Layout } from '../../app/components/layout'
+import { Row } from 'antd'
+import { Layout } from '../../components/layout'
 
 export const Login = () => {
-	return <Layout>Login</Layout>
+	return (
+		<Layout>
+			<Row align='middle' justify='center'></Row>
+		</Layout>
+	)
 }

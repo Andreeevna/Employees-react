@@ -1,4 +1,4 @@
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, theme } from 'antd'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
@@ -33,7 +33,7 @@ root.render(
 		<Provider store={store}>
 			<ConfigProvider
 				theme={{
-					algorithm: theme.darkTheme,
+					algorithm: theme.darkAlgorithm,
 				}}
 			>
 				<RouterProvider router={router} />
